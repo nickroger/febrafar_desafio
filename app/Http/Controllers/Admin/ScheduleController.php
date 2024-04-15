@@ -18,9 +18,13 @@ class ScheduleController extends Controller
         return view('schedules.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Schedule::create($data);
+        return redirect()
+            ->route('schedule.index')
+            ->with('message', 'Cadastrado com sucesso!');
     }
     public function show(string $id)
     {
