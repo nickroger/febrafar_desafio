@@ -64,6 +64,10 @@ Gere a key do projeto Laravel
 ```sh
 php artisan key:generate
 ```
+Gerar o banco de dados
+```sh
+php artisan migrate
+```
 
 Ativar Plugin datatable
 ```sh
