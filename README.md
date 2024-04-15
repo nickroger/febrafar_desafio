@@ -84,36 +84,4 @@ Acessar documentação API
 
 
 # PDF 
-Desafio Técnico - Backend PHP 2023
-
-Este é o desafio para a vaga de Backend PHP e consiste na entrega de uma API Restful
-escrita em PHP e usando o framework LARAVEL (8 ou superior), bem como, banco de
-dados MySQL 8. O prazo para este desafio é de 3 dias, e neste dia deverão ser entregues
-os códigos fontes para análise via GitHub para rodrigo.warzak@terceirizados.farmarcas.com.br.
-Pontos que serão avaliados e considerados:
-● Conhecimento e uso de recursos do LARAVEL;
-● Organização e documentação do código;
-● Lógica de programação e nível de abstração;
-● Uso do conceito SOLID;
-● Uso de testes unitários (PHPUnit);
-● Uso de PSR;
-● Uso de recursos uma API Restful;
-● Uso de recursos de SQL (MySQL).
-Regras:
-● A API deverá atender um módulo de agenda (CRUD);
-● Sabemos que uma agenda é composta por diversas atividades, e que possuem uma
-data de início, data de prazo, data de conclusão e um status(aberto/concluído), bem
-como possui um título, um tipo (que podem ser customizados), uma descrição e um
-usuário responsável (pode-se usar Laravel Sanctum para os usuários);
-● Deve existir opção de filtrar as atividades por range de data, ex.: do dia 21/12/2022
-até 10/01/2025;
-● O banco deverá ser criado utilizando migrations;
-● O projeto deve conter testes automatizados com PHPUnit;
-● A documentação da API deve ser feito via Swagger;
-● Não poderá permitir cadastros na mesma data ou que se sobreponham a outras
-datas de atividades de um mesmo usuário;
-● Não poderá permitir o registro de datas em finais de semana;
-● Caso você seja selecionado, marcaremos uma data para a revisão em conjunto do
-código entregue.
-
-BOA SORTE!
+<img src="https://github.com/nickroger/febrafar_desafio/tree/dev/febrafar_teste.png"  alt="Febrafar Desafio">
