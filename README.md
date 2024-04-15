@@ -84,4 +84,4 @@ Acessar documentação API
 
 
 # PDF 
-<img width="356" alt="Febrafar Desafio" src="https://github.com/nickroger/febrafar_desafio/assets/3020333/a7155c71-59f5-49e9-bc64-0eaefb66dfeb">
+<img alt="Febrafar Desafio" src="https://github.com/nickroger/febrafar_desafio/assets/3020333/a7155c71-59f5-49e9-bc64-0eaefb66dfeb">
