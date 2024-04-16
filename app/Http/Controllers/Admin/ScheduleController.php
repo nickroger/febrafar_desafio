@@ -36,11 +36,21 @@ class ScheduleController extends Controller
     }
     public function edit(string $id)
     {
-        //
+        if (!Schedule::find($id)) {
+            return back();
+        }
+        $schedule = Schedule::find($id);
+        return view('schedules.edit', compact('schedule'));
     }
-    public function update()
+    public function update(Request $request, Schedule $schedule, string $id)
     {
-        //
+        if (!Schedule::find($id)) {
+            return back();
+        }
+        $schedule->update($request->all());
+        return redirect()
+            ->route('products.index')
+            ->with('message', 'Atualizado com sucesso!');
     }
     public function destroy(string $id)
     {

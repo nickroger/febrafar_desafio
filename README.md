@@ -77,6 +77,15 @@ Ativar Plugin datatable
 ```sh
 php artisan adminlte:plugins install --plugin=datatables
 ```
+Ativar Plugin inputmask
+```sh
+php artisan adminlte:plugins install --plugin=inputmask
+```
+
+Ativar Plugin Bootstrap
+```sh
+php artisan adminlte:plugins install --plugin=tempusdominusBootstrap4
+```
 
 
 Acesse o projeto

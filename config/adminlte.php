@@ -492,6 +492,16 @@ return [
                 ],
             ],
         ],
+        'InputMask' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js',
+                ],
+            ],
+        ],
     ],
 
     /*
