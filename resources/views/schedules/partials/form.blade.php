@@ -25,8 +25,8 @@
             <label for="status">Status</label>
             <select id="status" name="status" class="form-control custom-select">
                 <option selected="" disabled="">Select one</option>
-                <option value="N" @if ($schedule->status ?? old('status') == 'O') selected @endif>Open</option>
-                <option value="U" @if ($schedule->status ?? old('status') == 'C') selected @endif>Closed</option>
+                <option value="o" @if ($schedule->status ?? old('status') == 'o') selected @endif>Open</option>
+                <option value="c" @if ($schedule->status ?? old('status') == 'c') selected @endif>Closed</option>
             </select>
         </div>
     </div>

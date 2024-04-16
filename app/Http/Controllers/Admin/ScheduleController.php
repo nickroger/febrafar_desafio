@@ -23,12 +23,16 @@ class ScheduleController extends Controller
         $data = $request->all();
         Schedule::create($data);
         return redirect()
-            ->route('schedule.index')
+            ->route('schedules.index')
             ->with('message', 'Cadastrado com sucesso!');
     }
     public function show(string $id)
     {
-        //
+        if (!Schedule::find($id)) {
+            return back();
+        }
+        $schedule = Schedule::find($id);
+        return view('schedules.show', compact('schedule'));
     }
     public function edit(string $id)
     {
@@ -38,7 +42,7 @@ class ScheduleController extends Controller
     {
         //
     }
-    public function delete(string $id)
+    public function destroy(string $id)
     {
         //
     }

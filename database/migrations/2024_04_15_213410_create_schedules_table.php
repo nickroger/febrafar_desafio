@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('deadline_date');
             $table->dateTime('conclusion_date');
             $table->enum('status', ['o', 'c']);
-            $table->text('descriptionn');
+            $table->text('description');
             $table->timestamps();
         });
     }

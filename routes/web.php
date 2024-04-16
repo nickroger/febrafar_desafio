@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
 
     //schedules
-    Route::delete('/schedules/{id}', [ScheduleController::class, 'delete'])->name('schedules.delete');
+    Route::delete('/schedules/{id}', [ScheduleController::class, 'destroy'])->name('schedules.delete');
     Route::put('/schedules/{id}', [ScheduleController::class, 'update'])->name('schedules.update');
     Route::get('/schedules/create', [ScheduleController::class, 'create'])->name('schedules.create');
     Route::get('/schedules/{id}/edit', [ScheduleController::class, 'edit'])->name('schedules.edit');

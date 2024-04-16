@@ -43,7 +43,7 @@
                     <td>{{ $schedule['start_date'] }}</td>
                     <td>{{ $schedule['conclusion_date'] }}</td>
                     <td>{{ $schedule['deadline_date'] }}</td>
-                    <td>{{ getStatusschedule($schedule['status']) }}</td>
+                    <td>{{ $schedule['status'] }}</td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="{{ route('schedules.show', $schedule['id']) }}">
                             <i class="fas fa-folder">
