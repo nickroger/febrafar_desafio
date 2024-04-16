@@ -49,11 +49,17 @@ class ScheduleController extends Controller
         }
         $schedule->update($request->all());
         return redirect()
-            ->route('products.index')
+            ->route('schedules.index')
             ->with('message', 'Atualizado com sucesso!');
     }
     public function destroy(string $id)
     {
-        //
+        if (!$schedule = Schedule::find($id)) {
+            return back();
+        }
+        $schedule->delete();
+        return redirect()
+            ->route('schedules.index')
+            ->with('message', 'Deletado com sucesso!');
     }
 }
