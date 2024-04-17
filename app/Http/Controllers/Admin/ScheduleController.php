@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DTO\Schedules\CreatScheduleDTO;
+use App\DTO\Schedules\CreateScheduleDTO;
 use App\DTO\Schedules\UpdateScheduleDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateScheduleRequest;
@@ -30,7 +30,7 @@ class ScheduleController extends Controller
 
     public function store(StoreUpdateScheduleRequest $request, Schedule $schedule)
     {
-        $this->service->new(CreatScheduleDTO::makeFromRequest($request));
+        $this->service->new(CreateScheduleDTO::makeFromRequest($request));
         return redirect()
             ->route('schedules.index')
             ->with('message', 'Cadastrado com sucesso!');

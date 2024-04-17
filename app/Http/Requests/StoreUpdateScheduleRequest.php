@@ -30,7 +30,8 @@ class StoreUpdateScheduleRequest extends FormRequest
             'start_date' => ['required', 'min:1', 'max:10', 'unique:schedules', new DateRequestRule],
             'deadline_date' => ['required', 'min:1', 'max:10', new DateRequestRule],
             'conclusion_date' => ['required', 'min:1', 'max:10', new DateRequestRule],
-            'status' => 'required'
+            'status' => 'required',
+            'id_user' => 'required'
         ];
 
         if ($this->method() === 'PUT') {

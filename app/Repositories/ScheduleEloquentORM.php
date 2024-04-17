@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\DTO\Schedules\CreatScheduleDTO;
+use App\DTO\Schedules\CreateScheduleDTO;
 use App\DTO\Schedules\UpdateScheduleDTO;
 use App\Models\Schedule;
 use App\Models\User;
@@ -47,7 +47,7 @@ class ScheduleEloquentORM implements ScheduleRepositoryInterface
 
         $schedule->delete();
     }
-    public function new(CreatScheduleDTO $dto): stdClass
+    public function new(CreateScheduleDTO $dto): stdClass
     {
         $schedule =  $this->model->create((array) $dto);
         return (object) $schedule->toArray();

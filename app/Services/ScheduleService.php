@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\DTO\Schedules\CreatScheduleDTO;
+use App\DTO\Schedules\CreateScheduleDTO;
 use App\DTO\Schedules\UpdateScheduleDTO;
 use App\Repositories\Contracts\ScheduleRepositoryInterface;
 use stdClass;
@@ -27,7 +27,7 @@ class ScheduleService
         return $this->repository->findOne($id);
     }
 
-    public function new(CreatScheduleDTO $dto): stdClass
+    public function new(CreateScheduleDTO $dto): stdClass
     {
         return $this->repository->new($dto);
     }

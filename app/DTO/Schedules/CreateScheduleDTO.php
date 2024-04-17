@@ -4,12 +4,12 @@ namespace App\DTO\Schedules;
 
 use App\Http\Requests\StoreUpdateScheduleRequest;
 
-class CreatScheduleDTO
+class CreateScheduleDTO
 {
     public function __construct(
-        public string $name,
+        public string $title,
         public string $description,
-        public string $state,
+        public string $status,
         public string $start_date,
         public string $deadline_date,
         public string $conclusion_date,
@@ -19,7 +19,7 @@ class CreatScheduleDTO
     public static function makeFromRequest(StoreUpdateScheduleRequest $request): self
     {
         return new  self(
-            $request->name,
+            $request->title,
             $request->description,
             $request->status,
             $request->start_date,
