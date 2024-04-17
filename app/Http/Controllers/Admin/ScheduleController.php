@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateScheduleRequest;
 use App\Models\Schedule;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -13,15 +15,16 @@ class ScheduleController extends Controller
         $schedules = $schedule->all();
         return view('schedules.index', compact('schedules'));
     }
-    public function create()
+    public function create(User $user)
     {
-        return view('schedules.create');
+        $users = $user->all();
+        return view('schedules.create', compact('users'));
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateScheduleRequest $request, Schedule $schedule)
     {
         $data = $request->all();
-        Schedule::create($data);
+        $schedule->create($data);
         return redirect()
             ->route('schedules.index')
             ->with('message', 'Cadastrado com sucesso!');
@@ -34,15 +37,17 @@ class ScheduleController extends Controller
         $schedule = Schedule::find($id);
         return view('schedules.show', compact('schedule'));
     }
-    public function edit(string $id)
+    public function edit(string $id, User $user)
     {
         if (!Schedule::find($id)) {
             return back();
         }
         $schedule = Schedule::find($id);
-        return view('schedules.edit', compact('schedule'));
+
+        $users = $user->all();
+        return view('schedules.edit', compact('schedule', 'users'));
     }
-    public function update(Request $request, Schedule $schedule, string $id)
+    public function update(StoreUpdateScheduleRequest $request, Schedule $schedule, string $id)
     {
         if (!Schedule::find($id)) {
             return back();

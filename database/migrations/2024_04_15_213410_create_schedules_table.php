@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('conclusion_date');
             $table->enum('status', ['o', 'c']);
             $table->text('description');
+            $table->integer('id_user');
             $table->timestamps();
         });
     }
