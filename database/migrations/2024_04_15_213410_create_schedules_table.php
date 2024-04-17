@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ScheduleStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,7 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('deadline_date');
             $table->dateTime('conclusion_date');
-            $table->enum('status', ['o', 'c']);
+            $table->enum('status', array_column(ScheduleStatus::cases(), 'name'));
             $table->text('description');
             $table->integer('id_user');
             $table->timestamps();

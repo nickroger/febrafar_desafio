@@ -24,6 +24,34 @@
 @stop
 
 @section('content')
+
+    <div class="container-fluid">
+        <form action="" method="GET">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="data_start">Start Date</label>
+                                <input type="date" name="data_start" id="data_start" class="form-control" inputmode="numeric" value="{{ old('data_start') }}">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="data_end">End Date</label>
+                                <input type="date" name="data_end" id="data_end" class="form-control" inputmode="numeric" value="{{ old('data_end') }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="submit" value="Search" class="btn btn-success">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     <p>
     <table id="list" class="table table-bordered table-hover">
         <thead>
@@ -43,7 +71,7 @@
                     <td>{{ date('d/m/Y', strtotime($schedule['start_date'])) }}</td>
                     <td>{{ date('d/m/Y', strtotime($schedule['conclusion_date'])) }}</td>
                     <td>{{ date('d/m/Y', strtotime($schedule['deadline_date'])) }}</td>
-                    <td>{{ $schedule['status'] }}</td>
+                    <td>{{ getStatusSchedule($schedule['status']) }}</td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="{{ route('schedules.show', $schedule['id']) }}">
                             <i class="fas fa-folder">

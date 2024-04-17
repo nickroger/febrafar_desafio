@@ -17,9 +17,12 @@ class ScheduleController extends Controller
         protected ScheduleService $service
     ) {
     }
-    public function index(Schedule $schedule)
+    public function index(Request $request)
     {
-        $schedules = $this->service->getAll();
+        $schedules = $this->service->getAll(
+            data_start: $request->data_start,
+            data_end: $request->data_end
+        );
         return view('schedules.index', compact('schedules'));
     }
     public function create(User $user)
