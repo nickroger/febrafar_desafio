@@ -53,7 +53,7 @@ class ScheduleController extends Controller
     {
         $schedules = $this->service->paginate(
             page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 1),
+            totalPerPage: $request->get('per_page', 2),
         );
 
         return ApiAdapter::toJson($schedules);
@@ -61,6 +61,82 @@ class ScheduleController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     */
+    /**
+     * @OA\Post(
+     *     path="/api/schedules",
+     *     summary="Create Schedule",
+     *     tags={"Schedules"},
+     *   @OA\Parameter(
+     *      name="title",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="description",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="start_date",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string",
+     *          format="date"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="deadline_date",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string",
+     *          format="date"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="conclusion_date",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string",
+     *          format="date"
+     *      )
+     *   ),
+     *     @OA\Parameter(
+     *      name="status",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *     @OA\Parameter(
+     *      name="id_user",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="number"
+     *      )
+     *   ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="An paged array of schedules",
+     *         @OA\Header(header="x-next", @OA\Schema(type="string"), description="A link to the next page of responses")
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="unexpected error",
+     *         @OA\Schema(ref="#/components/schemas/Error")
+     *     )
+     * )
      */
     public function store(StoreUpdateScheduleRequest $request)
     {
@@ -112,6 +188,90 @@ class ScheduleController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    /**
+     * @OA\Put(
+     *     path="/api/schedules",
+     *     summary="Update Schedule",
+     *     tags={"Schedules"},
+     *   @OA\Parameter(
+     *      name="id",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="number"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="title",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="description",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="start_date",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string",
+     *          format="date"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="deadline_date",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string",
+     *          format="date"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="conclusion_date",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string",
+     *          format="date"
+     *      )
+     *   ),
+     *     @OA\Parameter(
+     *      name="status",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *     @OA\Parameter(
+     *      name="id_user",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="number"
+     *      )
+     *   ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="An paged array of schedules",
+     *         @OA\Header(header="x-next", @OA\Schema(type="string"), description="A link to the next page of responses")
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="unexpected error",
+     *         @OA\Schema(ref="#/components/schemas/Error")
+     *     )
+     * )
+     */
     public function update(StoreUpdateScheduleRequest $request, string $id)
     {
         if (!$schedule = $this->service->update(
@@ -129,7 +289,7 @@ class ScheduleController extends Controller
      */
     /**
      * @OA\Delete(
-     *     path="/api/prodcuts/{id}",
+     *     path="/api/schedules/{id}",
      *     summary="Delete schedule based by id",
      *     description="deletes a single schedule based on the ID",
      *     operationId="deletePet",
