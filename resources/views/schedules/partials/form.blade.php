@@ -45,7 +45,7 @@
             <select id="id_user" name="id_user" class="form-control custom-select">
                 <option selected="" disabled="">Select one</option>
                 @foreach ($users as $user)
-                    <option value="{{$user->id}}" @if ($id_user == '{{$user->id}}' ?? old('id_user') == '{{$user->id}}') selected @endif>{{$user->name}}</option>
+                    <option value="{{$user["id"]}}" @if ($id_user == '{{$user["id"]}}' ?? old('id_user') == '{{$user["id"]}}') selected @endif>{{$user["name"]}}</option>
                 @endforeach
             </select>
         </div>

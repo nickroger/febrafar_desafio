@@ -2,67 +2,70 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DTO\Schedules\CreatScheduleDTO;
+use App\DTO\Schedules\UpdateScheduleDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateScheduleRequest;
 use App\Models\Schedule;
 use App\Models\User;
+use App\Services\ScheduleService;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
+    public function __construct(
+        protected ScheduleService $service
+    ) {
+    }
     public function index(Schedule $schedule)
     {
-        $schedules = $schedule->all();
+        $schedules = $this->service->getAll();
         return view('schedules.index', compact('schedules'));
     }
     public function create(User $user)
     {
-        $users = $user->all();
+        $users = $this->service->getAllUser();
         return view('schedules.create', compact('users'));
     }
 
     public function store(StoreUpdateScheduleRequest $request, Schedule $schedule)
     {
-        $data = $request->all();
-        $schedule->create($data);
+        $this->service->new(CreatScheduleDTO::makeFromRequest($request));
         return redirect()
             ->route('schedules.index')
             ->with('message', 'Cadastrado com sucesso!');
     }
     public function show(string $id)
     {
-        if (!Schedule::find($id)) {
+        if (!$this->service->findOne($id)) {
             return back();
         }
-        $schedule = Schedule::find($id);
+        $schedule = $this->service->findOne($id);
         return view('schedules.show', compact('schedule'));
     }
     public function edit(string $id, User $user)
     {
-        if (!Schedule::find($id)) {
+        if (!$this->service->findOne($id)) {
             return back();
         }
-        $schedule = Schedule::find($id);
+        $schedule = $this->service->findOne($id);
 
-        $users = $user->all();
+        $users = $this->service->getAllUser();
         return view('schedules.edit', compact('schedule', 'users'));
     }
     public function update(StoreUpdateScheduleRequest $request, Schedule $schedule, string $id)
     {
-        if (!Schedule::find($id)) {
+        $product = $this->service->update(UpdateScheduleDTO::makeFromRequest($request));
+        if (!$product) {
             return back();
         }
-        $schedule->update($request->all());
         return redirect()
             ->route('schedules.index')
             ->with('message', 'Atualizado com sucesso!');
     }
     public function destroy(string $id)
     {
-        if (!$schedule = Schedule::find($id)) {
-            return back();
-        }
-        $schedule->delete();
+        $this->service->delete($id);
         return redirect()
             ->route('schedules.index')
             ->with('message', 'Deletado com sucesso!');

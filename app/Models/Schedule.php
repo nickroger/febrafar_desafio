@@ -14,6 +14,7 @@ class Schedule extends Model
         'deadline_date',
         'conclusion_date',
         'status',
-        'description'
+        'description',
+        'id_user'
     ];
 }
