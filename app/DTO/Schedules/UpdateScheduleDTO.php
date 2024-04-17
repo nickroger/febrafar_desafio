@@ -2,6 +2,7 @@
 
 namespace App\DTO\Schedules;
 
+use App\Enums\ScheduleStatus;
 use App\Http\Requests\StoreUpdateScheduleRequest;
 
 class UpdateScheduleDTO
@@ -10,7 +11,7 @@ class UpdateScheduleDTO
         public string $id,
         public string $title,
         public string $description,
-        public string $status,
+        public ScheduleStatus $status,
         public string $start_date,
         public string $deadline_date,
         public string $id_user,
@@ -22,7 +23,7 @@ class UpdateScheduleDTO
             $id ?? $request->id,
             $request->title,
             $request->description,
-            $request->status,
+            ScheduleStatus::c,
             $request->start_date,
             $request->deadline_date,
             $request->id_user,

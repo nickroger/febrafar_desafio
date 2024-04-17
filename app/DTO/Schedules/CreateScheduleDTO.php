@@ -2,6 +2,7 @@
 
 namespace App\DTO\Schedules;
 
+use App\Enums\ScheduleStatus;
 use App\Http\Requests\StoreUpdateScheduleRequest;
 
 class CreateScheduleDTO
@@ -9,7 +10,7 @@ class CreateScheduleDTO
     public function __construct(
         public string $title,
         public string $description,
-        public string $status,
+        public ScheduleStatus $status,
         public string $start_date,
         public string $deadline_date,
         public string $conclusion_date,
@@ -21,7 +22,7 @@ class CreateScheduleDTO
         return new  self(
             $request->title,
             $request->description,
-            $request->status,
+            ScheduleStatus::o,
             $request->start_date,
             $request->deadline_date,
             $request->conclusion_date,
