@@ -88,6 +88,21 @@ php artisan adminlte:plugins install --plugin=tempusdominusBootstrap4
 ```
 
 
+Rodar testes, 3 métodos:
+
+Método 1:
+```sh
+php artisan test 
+```
+Método 2:
+```sh
+composer run test
+```
+Método 3:
+```sh
+./vendor/bin/pest
+```
+
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
 

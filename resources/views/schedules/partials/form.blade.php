@@ -36,8 +36,8 @@
             <label for="status">Status</label>
             <select id="status" name="status" class="form-control custom-select">
                 <option selected="" disabled="">Select one</option>
-                <option value="o" @if ($status == 'o' ?? old('status') == 'o') selected @endif>Open</option>
-                <option value="c" @if ($status == 'c' ?? old('status') == 'c') selected @endif>Closed</option>
+                <option value="Open" @if ($status == 'o' ?? old('status') == 'o') selected @endif>Open</option>
+                <option value="Close" @if ($status == 'c' ?? old('status') == 'c') selected @endif>Closed</option>
             </select>
         </div>
         <div>

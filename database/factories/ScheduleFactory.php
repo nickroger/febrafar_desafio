@@ -21,11 +21,20 @@ class ScheduleFactory extends Factory
         return [
             'title' => fake()->unique()->name(),
             'description' => fake()->sentence(10),
-            'start_date' => fake()->unique()->date('Y-m-d'),
-            'deadline_date' => fake()->unique()->date('Y-m-d'),
-            'conclusion_date' => fake()->unique()->date('Y-m-d'),
+            'start_date' => $this->validationdate(fake()->unique()->date('Y-m-d')),
+            'deadline_date' => $this->validationdate(fake()->unique()->date('Y-m-d')),
+            'conclusion_date' => $this->validationdate(fake()->unique()->date('Y-m-d')),
             'status' => ScheduleStatus::o,
             'id_user' => '1'
         ];
+    }
+    public function validationdate($data): string
+    {
+        $nameDay = date("D", strtotime($data));
+        if ($nameDay == "Sat" || $nameDay == "Sun") {
+            $newdate = fake()->unique()->date('Y-m-d');
+            return $this->validationdate($newdate);
+        }
+        return $data;
     }
 }
