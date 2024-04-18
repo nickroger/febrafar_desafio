@@ -11,7 +11,48 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    
+
+    /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Generation Token",
+     *     tags={"Generation Token"},
+     *   @OA\Parameter(
+     *      name="email",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="password",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="password"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="device_name",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="An paged array of token",
+     *         @OA\Header(header="x-next", @OA\Schema(type="string"), description="A link to the next page of responses")
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="unexpected error",
+     *         @OA\Schema(ref="#/components/schemas/Error")
+     *     )
+     * )
+     */
     public function auth(AuthRequest $request)
     {
         $user = User::where('email', $request->email)->first();

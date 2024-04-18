@@ -25,6 +25,7 @@ class ScheduleController extends Controller
     /**
      * @OA\Get(
      *     path="/api/schedules",
+     *     security={{"token": {}}},
      *     summary="List all Schedules",
      *     tags={"Schedules"},
      *     @OA\Parameter(
@@ -65,6 +66,7 @@ class ScheduleController extends Controller
     /**
      * @OA\Post(
      *     path="/api/schedules",
+     *     security={{"token": {}}},
      *     summary="Create Schedule",
      *     tags={"Schedules"},
      *   @OA\Parameter(
@@ -152,6 +154,7 @@ class ScheduleController extends Controller
     /**
      * @OA\Get(
      *     path="/api/schedules/{id}",
+     *     security={{"token": {}}},
      *     summary="List schedules based by ID",
      *     description="Returns a schedule based on a single ID",
      *     tags={"Schedules"},
@@ -191,6 +194,7 @@ class ScheduleController extends Controller
     /**
      * @OA\Put(
      *     path="/api/schedules",
+     *     security={{"token": {}}},
      *     summary="Update Schedule",
      *     tags={"Schedules"},
      *   @OA\Parameter(
@@ -290,6 +294,7 @@ class ScheduleController extends Controller
     /**
      * @OA\Delete(
      *     path="/api/schedules/{id}",
+     *     security={{"token": {}}},
      *     summary="Delete schedule based by id",
      *     description="deletes a single schedule based on the ID",
      *     operationId="deletePet",
@@ -306,7 +311,7 @@ class ScheduleController extends Controller
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="prodcut deleted"
+     *         description="schedule deleted"
      *     ),
      *     @OA\Response(
      *         response="default",

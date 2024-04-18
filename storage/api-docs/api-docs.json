@@ -9,6 +9,57 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Generation Token"
+                ],
+                "summary": "Generation Token",
+                "operationId": "8b2b95f02f1001d7ca428e735f210b0d",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "password"
+                        }
+                    },
+                    {
+                        "name": "device_name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An paged array of token",
+                        "headers": {
+                            "x-next": {
+                                "description": "A link to the next page of responses",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
         "/api/schedules": {
             "get": {
                 "tags": [
@@ -43,7 +94,12 @@
                     "default": {
                         "description": "unexpected error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "token": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -135,7 +191,12 @@
                     "default": {
                         "description": "unexpected error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "token": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -219,7 +280,12 @@
                     "default": {
                         "description": "unexpected error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "token": []
+                    }
+                ]
             }
         },
         "/api/schedules/{id}": {
@@ -249,7 +315,12 @@
                     "default": {
                         "description": "unexpected error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "token": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -272,23 +343,26 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "prodcut deleted"
+                        "description": "schedule deleted"
                     },
                     "default": {
                         "description": "unexpected error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "token": []
+                    }
+                ]
             }
         }
     },
     "components": {
         "securitySchemes": {
-            "bearerAuth": {
-                "type": "http",
-                "name": "bearerAuth",
-                "in": "header",
-                "bearerFormat": "JWT",
-                "scheme": "bearer"
+            "token": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
             }
         }
     }

@@ -15,14 +15,12 @@ use Illuminate\Routing\Controller as BaseController;
  *         email="nick@mundoartistico.com.br"
  *     ),
  * ),
- *   @OA\SecurityScheme(
- *       securityScheme="bearerAuth",
- *       in="header",
- *       name="bearerAuth",
- *       type="http",
- *       scheme="bearer",
- *       bearerFormat="JWT",
- *    ),
+ * @OA\SecurityScheme(
+ *   securityScheme="token",
+ *   type="apiKey",
+ *   name="Authorization",
+ *   in="header"
+ * )
  */
 class Controller extends BaseController
 {
