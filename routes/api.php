@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [AuthController::class, 'auth']);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
+Route::post('/login', [AuthController::class, 'auth'])->name('auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth:sanctum');
+Route::get('/me', [AuthController::class, 'me'])->name('auth.me')->middleware('auth:sanctum');
 // Route::middleware('auth:sanctum')->group(function () {
 //     Route::apiResource('/schedules', ScheduleController::class);
 // });
